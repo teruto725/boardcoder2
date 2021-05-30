@@ -4,7 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   mount_uploader :image, ImageUploader
+  has_many :codes, dependent: :destroy; # dependent destroyでuser消えたらcodeも消えるようになる
   validates :name,
             presence: true, #追記
-            uniqueness: true
+            uniqueness: true,
+            length: {maximum: 10}
+
 end

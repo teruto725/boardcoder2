@@ -1,0 +1,9 @@
+<div>
+  <div>code index</div>
+  <% @codes.each do |code| %>
+    <div><%= code.name %></div>
+    <div><%= code.file %></div>
+  <%end %>
+  <%=link_to "Go To Top Page", "/" %>
+  <%=link_to "Upload New Code", "codes/new" %>
+</div>
