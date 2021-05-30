@@ -1,16 +1,22 @@
 <div>
-  <%if user_signed_in? %>
-    <img src=<%= current_user.image %> class="icon_image">
+  <%if @user.nil? %>
+    <%= link_to "ログイン", new_user_session_path%>
+    <%= link_to "新規登録", new_user_registration_path %>
 
-    <div><%= current_user.email %></div>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
 
   <%else %>
-  <%= link_to "ログイン", new_user_session_path%>
-    <%= link_to "新規登録", new_user_registration_path %>
+    <div>
+      <img src=<%= @user.image %> class="icon_image">
+    </div>
+    <div>
+      <%= @user.email %>
+    </div>
+    <div>
+      <%= @user.name %>
+    </div>
+    <div>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+    </div>
   <%end %>
 
-  <div>
-    <%= @user %>
-  </div>
 </div>
